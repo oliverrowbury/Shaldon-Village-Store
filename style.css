@@ -867,3 +867,8 @@ background-image:url("PUT SHOP PHOTO HERE");
   box-shadow: 0 20px 45px rgba(15, 42, 67, 0.18);
 }
 
+.brand img{
+    height:70px;
+    width:auto;
+    display:block;
+}
