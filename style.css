@@ -867,8 +867,20 @@ background-image:url("PUT SHOP PHOTO HERE");
   box-shadow: 0 20px 45px rgba(15, 42, 67, 0.18);
 }
 
-.brand img{
-    height:70px;
-    width:auto;
-    display:block;
+.brand img {
+  display: block;
+  width: clamp(320px, 34vw, 560px);
+  height: auto;
+  max-width: none;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+@media (max-width: 700px) {
+  .brand img {
+    width: min(390px, 90vw);
+  }
 }
