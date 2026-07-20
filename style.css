@@ -1028,3 +1028,141 @@ background-image:url("PUT SHOP PHOTO HERE");
         grid-template-columns: 1fr;
     }
 }
+/* Free local delivery page */
+
+.delivery-service {
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f7f3ea 100%);
+}
+
+.delivery-service > .container > .section-label,
+.delivery-service > .container > h2,
+.delivery-intro {
+  text-align: center;
+}
+
+.delivery-service > .container > h2 {
+  font-family: "Playfair Display", serif;
+  color: var(--navy);
+  font-size: clamp(42px, 5vw, 62px);
+  margin-bottom: 22px;
+}
+
+.delivery-intro {
+  max-width: 760px;
+  margin: 0 auto 55px;
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.8;
+}
+
+.delivery-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.delivery-step {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(15, 42, 67, 0.1);
+  border-radius: 24px;
+  padding: 34px;
+  box-shadow: 0 16px 40px rgba(15, 42, 67, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.delivery-step:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 22px 50px rgba(15, 42, 67, 0.16);
+}
+
+.delivery-icon {
+  display: block;
+  font-size: 42px;
+  margin-bottom: 22px;
+}
+
+.step-number {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  color: rgba(15, 42, 67, 0.16);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.delivery-step h3 {
+  color: var(--navy);
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.delivery-step p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.delivery-contact {
+  margin-top: 55px;
+  padding: 45px;
+  border-radius: 28px;
+  background: var(--green);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.delivery-contact h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(34px, 4vw, 48px);
+  margin-bottom: 14px;
+}
+
+.delivery-contact p:not(.section-label) {
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+}
+
+.delivery-actions {
+  display: grid;
+  gap: 14px;
+  min-width: 250px;
+}
+
+.delivery-email {
+  color: white;
+  font-weight: 600;
+  text-align: center;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 34px;
+  color: var(--navy);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: var(--green);
+}
+
+@media (max-width: 850px) {
+  .delivery-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .delivery-contact {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .delivery-actions {
+    width: 100%;
+  }
+}
