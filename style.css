@@ -1269,3 +1269,11 @@ background-image:url("PUT SHOP PHOTO HERE");
   }
 }
 
+.page-header .brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 10px 16px;
+  border-radius: 16px;
+}
