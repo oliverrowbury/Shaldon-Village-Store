@@ -1259,3 +1259,6 @@ background-image:url("PUT SHOP PHOTO HERE");
     min-height: 300px;
   }
 }
+.delivery-page {
+  background: red !important;
+}
