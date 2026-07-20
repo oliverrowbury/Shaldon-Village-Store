@@ -881,6 +881,15 @@ background-image:url("PUT SHOP PHOTO HERE");
   .brand img {
     width: min(390px, 90vw);
   }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    padding: 10px 18px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
 }
 .card-link {
   color: inherit;
