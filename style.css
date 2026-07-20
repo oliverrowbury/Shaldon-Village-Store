@@ -1001,3 +1001,30 @@ background-image:url("PUT SHOP PHOTO HERE");
     object-fit:cover;
     box-shadow:0 20px 45px rgba(0,0,0,.18);
 }
+/* Product page gallery */
+
+.product-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.product-gallery img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.15);
+    transition: transform 0.3s ease;
+}
+
+.product-gallery img:hover {
+    transform: scale(1.03);
+}
+
+@media (max-width: 800px) {
+    .product-gallery {
+        grid-template-columns: 1fr;
+    }
+}
