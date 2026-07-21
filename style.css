@@ -1423,3 +1423,28 @@ background-image:url("PUT SHOP PHOTO HERE");
     grid-template-columns: 1fr;
   }
 }
+/* Social links */
+
+.social-links{
+    display:flex;
+    gap:18px;
+    margin-top:25px;
+    flex-wrap:wrap;
+}
+
+.social-links a{
+    text-decoration:none;
+    background:#ffffff;
+    color:var(--navy);
+    padding:12px 22px;
+    border-radius:999px;
+    font-weight:600;
+    transition:.3s;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.social-links a:hover{
+    background:var(--green);
+    color:#fff;
+    transform:translateY(-3px);
+}
