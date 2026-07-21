@@ -1464,3 +1464,32 @@ background-image:url("PUT SHOP PHOTO HERE");
   transform: translateY(-3px);
   box-shadow: 0 16px 34px rgba(63, 125, 88, 0.22);
 }
+/* Fix Visit section buttons */
+
+.visit-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.visit-buttons .button {
+  color: #ffffff !important;
+  min-width: 185px;
+  text-align: center;
+}
+
+.visit-buttons .button:hover {
+  color: #ffffff !important;
+}
+
+.visit-buttons .button-dark {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #ffffff !important;
+}
+
+.visit-buttons .button-dark:hover {
+  background: var(--dark-navy);
+  border-color: var(--dark-navy);
+}
