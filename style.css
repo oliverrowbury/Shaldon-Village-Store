@@ -1534,3 +1534,43 @@ background-image:url("PUT SHOP PHOTO HERE");
     min-height: 250px;
   }
 }
+.products .cards {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+}
+
+.products .card,
+.products .card-link {
+  width: 100% !important;
+  height: 280px !important;
+  min-height: 280px !important;
+  max-height: 280px !important;
+  aspect-ratio: unset !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 28px !important;
+}
+
+.products .card p {
+  flex: 1;
+}
+
+@media (max-width: 900px) {
+  .products .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .products .cards {
+    grid-template-columns: 1fr !important;
+  }
+
+  .products .card,
+  .products .card-link {
+    height: auto !important;
+    min-height: 250px !important;
+    max-height: none !important;
+  }
+}
