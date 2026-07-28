@@ -1493,3 +1493,31 @@ background-image:url("PUT SHOP PHOTO HERE");
   background: var(--dark-navy);
   border-color: var(--dark-navy);
 }
+/* Product page photo grid */
+
+.product-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  width: 100%;
+  margin: 42px 0;
+}
+
+.product-photo-grid img {
+  display: block;
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 14px 35px rgba(15, 42, 67, 0.14);
+}
+
+@media (max-width: 750px) {
+  .product-photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-photo-grid img {
+    height: 280px;
+  }
+}
