@@ -1529,10 +1529,16 @@ background-image:url("PUT SHOP PHOTO HERE");
 .product-photo-grid img {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 300px;
   object-fit: cover;
+  object-position: center;
   border-radius: 18px;
   box-shadow: 0 12px 30px rgba(15, 42, 67, 0.14);
+  transition: transform 0.3s ease;
+}
+
+.product-photo-grid img:hover {
+  transform: scale(1.03);
 }
 
 @media (max-width: 850px) {
