@@ -83,6 +83,35 @@
     </div>
   </div>
 </footer>
+<div id="lightbox" class="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightbox-image" src="" alt="">
+</div>
 
+<script>
+const images = document.querySelectorAll(".product-photo-grid img");
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightbox-image");
+const closeButton = document.querySelector(".lightbox-close");
+
+images.forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.classList.add("open");
+    lightboxImage.src = img.src;
+    lightboxImage.alt = img.alt;
+  });
+});
+
+closeButton.addEventListener("click", () => {
+  lightbox.classList.remove("open");
+});
+
+lightbox.addEventListener("click", e => {
+  if (e.target === lightbox) {
+    lightbox.classList.remove("open");
+  }
+});
+</script>
 </body>
 </html>
