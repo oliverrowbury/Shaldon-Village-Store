@@ -85,34 +85,158 @@
     </div>
   </div>
 </footer>
-<div id="lightbox" class="lightbox">
-  <span class="lightbox-close">&times;</span>
-  <img id="lightbox-image" src="" alt="">
+<div
+  id="lightbox"
+  class="lightbox"
+  aria-hidden="true"
+  role="dialog"
+  aria-label="Full-screen product photo"
+>
+  <div class="lightbox-controls">
+    <button
+      class="lightbox-button"
+      id="zoom-out"
+      type="button"
+      aria-label="Zoom out"
+    >
+      −
+    </button>
+
+    <button
+      class="lightbox-button"
+      id="zoom-reset"
+      type="button"
+      aria-label="Reset zoom"
+    >
+      1:1
+    </button>
+
+    <button
+      class="lightbox-button"
+      id="zoom-in"
+      type="button"
+      aria-label="Zoom in"
+    >
+      +
+    </button>
+
+    <button
+      class="lightbox-button lightbox-close"
+      id="lightbox-close"
+      type="button"
+      aria-label="Close image"
+    >
+      ×
+    </button>
+  </div>
+
+  <div class="lightbox-stage" id="lightbox-stage">
+    <img
+      class="lightbox-image"
+      id="lightbox-image"
+      src=""
+      alt=""
+    >
+  </div>
 </div>
 
 <script>
-const images = document.querySelectorAll(".product-photo-grid img");
+document.addEventListener("DOMContentLoaded", () => {
+  const galleryImages = document.querySelectorAll(".product-photo-grid img");
 
-const lightbox = document.getElementById("lightbox");
-const lightboxImage = document.getElementById("lightbox-image");
-const closeButton = document.querySelector(".lightbox-close");
+  const lightbox = document.getElementById("lightbox");
+  const stage = document.getElementById("lightbox-stage");
+  const fullImage = document.getElementById("lightbox-image");
 
-images.forEach(img => {
-  img.addEventListener("click", () => {
-    lightbox.classList.add("open");
-    lightboxImage.src = img.src;
-    lightboxImage.alt = img.alt;
-  });
-});
+  const closeButton = document.getElementById("lightbox-close");
+  const zoomInButton = document.getElementById("zoom-in");
+  const zoomOutButton = document.getElementById("zoom-out");
+  const resetButton = document.getElementById("zoom-reset");
 
-closeButton.addEventListener("click", () => {
-  lightbox.classList.remove("open");
-});
+  let zoom = 1;
 
-lightbox.addEventListener("click", e => {
-  if (e.target === lightbox) {
-    lightbox.classList.remove("open");
+  function updateZoom() {
+    fullImage.style.transform = `scale(${zoom})`;
+    fullImage.style.cursor = zoom > 1 ? "zoom-out" : "zoom-in";
   }
+
+  function resetZoom() {
+    zoom = 1;
+    updateZoom();
+    stage.scrollTop = 0;
+    stage.scrollLeft = 0;
+  }
+
+  function openLightbox(image) {
+    fullImage.src = image.src;
+    fullImage.alt = image.alt;
+    resetZoom();
+
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    fullImage.src = "";
+    resetZoom();
+  }
+
+  galleryImages.forEach((image) => {
+    image.addEventListener("click", () => openLightbox(image));
+  });
+
+  zoomInButton.addEventListener("click", () => {
+    zoom = Math.min(zoom + 0.25, 4);
+    updateZoom();
+  });
+
+  zoomOutButton.addEventListener("click", () => {
+    zoom = Math.max(zoom - 0.25, 0.5);
+    updateZoom();
+  });
+
+  resetButton.addEventListener("click", resetZoom);
+  closeButton.addEventListener("click", closeLightbox);
+
+  fullImage.addEventListener("click", () => {
+    zoom = zoom === 1 ? 2 : 1;
+    updateZoom();
+  });
+
+  stage.addEventListener(
+    "wheel",
+    (event) => {
+      event.preventDefault();
+
+      if (event.deltaY < 0) {
+        zoom = Math.min(zoom + 0.15, 4);
+      } else {
+        zoom = Math.max(zoom - 0.15, 0.5);
+      }
+
+      updateZoom();
+    },
+    { passive: false }
+  );
+
+  stage.addEventListener("click", (event) => {
+    if (event.target === stage) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox.classList.contains("open")) return;
+
+    if (event.key === "Escape") closeLightbox();
+    if (event.key === "+") zoomInButton.click();
+    if (event.key === "-") zoomOutButton.click();
+    if (event.key === "0") resetZoom();
+  });
 });
 </script>
 
