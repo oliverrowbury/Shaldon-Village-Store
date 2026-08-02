@@ -1551,3 +1551,119 @@ background-image:url("PUT SHOP PHOTO HERE");
     height: 220px;
   }
 }
+/* Clickable product photos */
+
+.product-photo-grid img {
+  cursor: zoom-in;
+}
+
+/* Full-screen lightbox */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 80px;
+  background: rgba(5, 15, 24, 0.94);
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox-image {
+  display: block;
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+}
+
+.lightbox-close,
+.lightbox-previous,
+.lightbox-next {
+  position: absolute;
+  border: 0;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-previous:hover,
+.lightbox-next:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.lightbox-close {
+  top: 24px;
+  right: 28px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.lightbox-previous,
+.lightbox-next {
+  top: 50%;
+  width: 54px;
+  height: 70px;
+  border-radius: 14px;
+  font-size: 38px;
+  transform: translateY(-50%);
+}
+
+.lightbox-previous:hover,
+.lightbox-next:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+.lightbox-previous {
+  left: 20px;
+}
+
+.lightbox-next {
+  right: 20px;
+}
+
+@media (max-width: 650px) {
+  .lightbox {
+    padding: 70px 18px 30px;
+  }
+
+  .lightbox-image {
+    max-width: 96vw;
+    max-height: 78vh;
+  }
+
+  .lightbox-previous,
+  .lightbox-next {
+    top: auto;
+    bottom: 18px;
+    width: 58px;
+    height: 48px;
+    transform: none;
+  }
+
+  .lightbox-previous:hover,
+  .lightbox-next:hover {
+    transform: scale(1.05);
+  }
+
+  .lightbox-previous {
+    left: calc(50% - 70px);
+  }
+
+  .lightbox-next {
+    right: calc(50% - 70px);
+  }
+}
