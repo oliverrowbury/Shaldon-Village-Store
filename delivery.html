@@ -88,6 +88,78 @@
     </div>
   </section>
 
+  <section class="order-section" id="order">
+    <div class="container order-container">
+
+      <p class="section-label">Two ways to order</p>
+      <h2>Call us, or send your order online</h2>
+      <p class="order-intro">
+        Call the store and tell us what you need, or fill in the form below.
+        Either way, your order goes straight to us, our team picks it and gets
+        it delivered free within Shaldon.
+      </p>
+
+      <div class="order-options">
+
+        <div class="order-option order-call">
+          <span class="order-option-icon">📞</span>
+          <h3>Call the store</h3>
+          <p>Speak to us directly and place your order over the phone.</p>
+          <a class="button" href="tel:01626873426">Call 01626 873426</a>
+        </div>
+
+        <div class="order-option order-online">
+          <span class="order-option-icon">🛒</span>
+          <h3>Order online</h3>
+          <p>Send us your order below and we'll get it ready for delivery.</p>
+
+          <form
+            id="delivery-form"
+            class="order-form"
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="New delivery order - Shaldon Village Store">
+            <input type="text" name="_gotcha" style="display:none">
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="order-name">Name</label>
+                <input type="text" id="order-name" name="Name" required>
+              </div>
+
+              <div class="form-field">
+                <label for="order-phone">Phone number</label>
+                <input type="tel" id="order-phone" name="Phone" required>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="order-address">Delivery address in Shaldon</label>
+              <input type="text" id="order-address" name="Address" required>
+            </div>
+
+            <div class="form-field">
+              <label for="order-items">What would you like to order?</label>
+              <textarea id="order-items" name="Order details" rows="4" required></textarea>
+            </div>
+
+            <div class="form-field">
+              <label for="order-notes">Anything else we should know? (optional)</label>
+              <textarea id="order-notes" name="Notes" rows="2"></textarea>
+            </div>
+
+            <button type="submit" class="button">Send Delivery Order</button>
+
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
 </main>
 
 <footer class="footer">
@@ -266,6 +338,43 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.key === "-") zoomOutButton.click();
     if (event.key === "0") resetZoom();
   });
+
+  const deliveryForm = document.getElementById("delivery-form");
+  const formStatus = document.getElementById("form-status");
+
+  if (deliveryForm) {
+    deliveryForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const submitButton = deliveryForm.querySelector("button[type=submit]");
+      submitButton.disabled = true;
+      formStatus.textContent = "Sending your order...";
+      formStatus.className = "form-status";
+
+      try {
+        const response = await fetch(deliveryForm.action, {
+          method: "POST",
+          body: new FormData(deliveryForm),
+          headers: { Accept: "application/json" },
+        });
+
+        if (response.ok) {
+          formStatus.textContent =
+            "Thanks! Your order has been sent - we'll be in touch to confirm.";
+          formStatus.className = "form-status form-status-success";
+          deliveryForm.reset();
+        } else {
+          throw new Error("Form submission failed");
+        }
+      } catch (error) {
+        formStatus.textContent =
+          "Sorry, something went wrong sending your order. Please call us on 01626 873426 instead.";
+        formStatus.className = "form-status form-status-error";
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  }
 });
 </script>
 </body>
