@@ -431,16 +431,25 @@ a {
 }
 
 .reviews .section-label,
-.reviews h2,
-.review-summary {
+.reviews h2 {
   text-align: center;
 }
 
+.review-summary-card {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+  background: white;
+  border-radius: 26px;
+  padding: 44px 40px;
+  box-shadow: 0 15px 40px rgba(15, 42, 67, 0.1);
+}
+
 .review-summary {
-  color: var(--muted);
-  font-size: 18px;
-  margin-top: -30px;
-  margin-bottom: 44px;
+  color: var(--navy);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
 .rating-star {
@@ -448,41 +457,9 @@ a {
   font-size: 22px;
 }
 
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.review-card {
-  background: white;
-  border-radius: 22px;
-  padding: 32px;
-  box-shadow: 0 15px 40px rgba(15, 42, 67, 0.1);
-}
-
-.stars {
-  color: #c89b3c;
-  font-size: 21px;
-  letter-spacing: 3px;
-  margin-bottom: 18px;
-}
-
-.review-card blockquote {
-  color: #4f5c65;
-  font-size: 18px;
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-.review-card h3 {
-  color: var(--navy);
-  font-size: 17px;
-}
-
-.review-button-wrap {
-  text-align: center;
-  margin-top: 40px;
+.review-summary-note {
+  color: var(--muted);
+  margin-bottom: 28px;
 }
 
 .contact {
@@ -560,10 +537,6 @@ a {
   }
 
   .visit-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .reviews-grid {
     grid-template-columns: 1fr;
   }
 
@@ -843,7 +816,7 @@ background-image:url("essentials-2.jpeg");
 
 .card,
 .why-card,
-.review-card,
+.review-summary-card,
 .gallery-item,
 .instore-item,
 .storefront-photo,
@@ -855,7 +828,7 @@ background-image:url("essentials-2.jpeg");
 
 .card:hover,
 .why-card:hover,
-.review-card:hover,
+.review-summary-card:hover,
 .gallery-item:hover,
 .instore-item:hover {
   transform: translateY(-7px);
