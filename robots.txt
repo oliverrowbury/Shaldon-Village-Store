@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oliverrowbury.github.io/Shaldon-Village-Store/sitemap.xml
