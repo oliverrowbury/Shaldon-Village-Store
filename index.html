@@ -459,13 +459,15 @@
       </div>
 
       <div class="map-card">
-        <iframe
-          class="google-map"
-          src="https://www.google.com/maps?q=Shaldon%20Village%20Store%2C%2011%20Fore%20St%2C%20Shaldon%2C%20Teignmouth%20TQ14%200DZ&output=embed"
-          title="Map showing Shaldon Village Store"
-          loading="lazy"
-          allowfullscreen>
-        </iframe>
+        <div class="map-placeholder" id="map-placeholder">
+          <span class="map-placeholder-icon">📍</span>
+          <p class="map-placeholder-title">11 Fore Street, Shaldon</p>
+          <button type="button" class="button" id="load-map-btn">View Map</button>
+          <p class="map-placeholder-note">
+            Loading the map connects to Google Maps, which may set cookies.
+            See our <a href="privacy.html">Privacy Policy</a>.
+          </p>
+        </div>
       </div>
 
     </div>
@@ -649,5 +651,23 @@
     <p><a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; © 2026 Shaldon Village Store</p>
   </div>
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const loadMapBtn = document.getElementById("load-map-btn");
+  const placeholder = document.getElementById("map-placeholder");
+
+  if (loadMapBtn && placeholder) {
+    loadMapBtn.addEventListener("click", () => {
+      const iframe = document.createElement("iframe");
+      iframe.className = "google-map";
+      iframe.src = "https://www.google.com/maps?q=Shaldon%20Village%20Store%2C%2011%20Fore%20St%2C%20Shaldon%2C%20Teignmouth%20TQ14%200DZ&output=embed";
+      iframe.title = "Map showing Shaldon Village Store";
+      iframe.allowFullscreen = true;
+      placeholder.replaceWith(iframe);
+    });
+  }
+});
+</script>
 </body>
 </html>
