@@ -764,10 +764,15 @@ background-image:url("essentials-1.jpeg");
 .storefront-photo {
   min-height: 520px;
   border-radius: 28px;
-  background-image: url("essentials-3.jpeg");
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(135deg, var(--navy), var(--dark-navy));
   box-shadow: 0 24px 60px rgba(15, 42, 67, 0.16);
+  display: grid;
+  place-content: center;
+}
+
+.storefront-photo::before {
+  content: "🏪";
+  font-size: 90px;
 }
 
 .storefront-text h2 {
