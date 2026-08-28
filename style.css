@@ -1199,7 +1199,10 @@ background-image:url("essentials-1.jpeg");
 /* Latest offers preview */
 
 .offers-preview {
-  background: #ffffff;
+  background:
+    radial-gradient(circle at top right, rgba(63, 125, 88, 0.1), transparent 40%),
+    radial-gradient(circle at bottom left, rgba(200, 155, 60, 0.08), transparent 35%),
+    #ffffff;
 }
 
 .offers-preview .section-label,
@@ -1231,10 +1234,37 @@ background-image:url("essentials-1.jpeg");
 }
 
 .offer-card {
-  background: var(--cream);
+  position: relative;
+  background: #ffffff;
   border-radius: 22px;
-  padding: 32px;
+  padding: 40px 32px 32px;
   box-shadow: 0 15px 40px rgba(15, 42, 67, 0.1);
+  text-align: center;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.offer-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--green), var(--sand));
+}
+
+.offer-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(15, 42, 67, 0.18);
+}
+
+.offer-icon {
+  display: block;
+  font-size: 40px;
+  margin-bottom: 14px;
 }
 
 .offer-badge {
@@ -1245,18 +1275,21 @@ background-image:url("essentials-1.jpeg");
   border-radius: 999px;
   font-size: 12px;
   font-weight: 700;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .offer-card h3 {
   color: var(--navy);
-  font-size: 21px;
-  margin-bottom: 12px;
+  font-size: 19px;
+  margin-bottom: 14px;
+  line-height: 1.4;
 }
 
-.offer-card p {
-  color: var(--muted);
-  line-height: 1.7;
+.offer-price {
+  font-family: "Playfair Display", serif;
+  color: var(--green);
+  font-size: 36px;
+  font-weight: 700;
 }
 
 .offers-preview .button {
@@ -1578,7 +1611,10 @@ background-image:url("essentials-1.jpeg");
 /* Social feed section */
 
 .social-feed {
-  background: var(--cream);
+  background:
+    radial-gradient(circle at top left, rgba(63, 125, 88, 0.1), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(15, 42, 67, 0.08), transparent 40%),
+    var(--cream);
 }
 
 .social-feed .section-label,
@@ -1610,17 +1646,76 @@ background-image:url("essentials-1.jpeg");
 }
 
 .social-feed-card {
+  position: relative;
   background: white;
   border-radius: 26px;
   padding: 24px;
   box-shadow: 0 15px 40px rgba(15, 42, 67, 0.1);
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.social-feed-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(15, 42, 67, 0.18);
+}
+
+.social-feed-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+}
+
+.social-feed-card-facebook::before {
+  background: #1877f2;
+}
+
+.social-feed-card-instagram::before {
+  background: linear-gradient(90deg, #f9ce34, #ee2a7b, #6228d7);
+}
+
+.social-feed-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  margin-top: 6px;
+}
+
+.social-feed-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.social-feed-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
+
+.social-feed-icon-facebook {
+  background: #1877f2;
+}
+
+.social-feed-icon-instagram {
+  background: linear-gradient(135deg, #f9ce34, #ee2a7b, #6228d7);
 }
 
 .social-feed-card h3 {
   color: var(--navy);
   font-family: "Playfair Display", serif;
   font-size: 22px;
-  margin-bottom: 16px;
   text-align: center;
 }
 
@@ -1632,7 +1727,7 @@ background-image:url("essentials-1.jpeg");
 
 .social-embed-placeholder {
   height: 550px;
-  background: var(--cream);
+  background: linear-gradient(135deg, rgba(249, 206, 52, 0.08), rgba(238, 42, 123, 0.08), rgba(98, 40, 215, 0.08));
   display: flex;
   flex-direction: column;
   align-items: center;
