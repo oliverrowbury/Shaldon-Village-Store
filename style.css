@@ -890,7 +890,7 @@ background-image:url("essentials-1.jpeg");
   .brand img {
     width: min(390px, 90vw);
   }
-  .brand {
+  .hero .brand {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1116,14 +1116,6 @@ background-image:url("essentials-1.jpeg");
   }
 }
 
-.page-header .brand {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #ffffff;
-  padding: 10px 16px;
-  border-radius: 16px;
-}
 /* FAQ section */
 
 .faq {
